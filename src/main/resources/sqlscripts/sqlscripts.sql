@@ -1,0 +1,25 @@
+CREATE TABLE simple_db.user (
+id INT NOT NULL UNIQUE AUTO_INCREMENT,
+name VARCHAR(255) NOT NULL,
+nickname VARCHAR(255) UNIQUE NOT NULL,
+PRIMARY KEY (id)
+);
+
+ALTER TABLE simple_db.user
+    ADD COLUMN age INT NOT NULL ;
+
+CREATE TABLE simple_db.sportsclub (
+id INT NOT NULL UNIQUE AUTO_INCREMENT,
+name VARCHAR(255) NOT NULL,
+city VARCHAR(255) UNIQUE NOT NULL,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE simple_db.users_sportsclub (
+id INT NOT NULL UNIQUE AUTO_INCREMENT,
+sport_club_id INT NOT NULL,
+user_id INT NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (sport_club_id) REFERENCES sportsclub(id),
+FOREIGN KEY (user_id) REFERENCES user(id)
+);
